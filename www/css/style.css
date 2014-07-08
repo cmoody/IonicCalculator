@@ -1,5 +1,6 @@
 /* Add spacing on calculator and borders around inputs */
 
+/* Calculator */
 .headings {
 	text-align: center;
 	font-weight: bold;
@@ -35,4 +36,9 @@ input.description {
 }
 .tipgroup .button:first-child {
 	margin-right: 10px;
+}
+
+/* History */
+.value {
+	text-align: right;
 }

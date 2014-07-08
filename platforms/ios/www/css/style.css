@@ -1,0 +1,38 @@
+/* Add spacing on calculator and borders around inputs */
+
+.headings {
+	text-align: center;
+	font-weight: bold;
+}
+
+input.description {
+	border: 1px solid #b7b7b7;
+	padding: 5px;
+	margin: 5px;
+}
+
+.inputs input {
+	border: 1px solid #b7b7b7;
+	text-align: right;
+	padding: 5px;
+	height: 44px;
+}
+
+.button-bar {
+	margin: 5px;
+}
+
+.tipbtngroup {
+	margin-bottom: 10px;
+}
+
+.tipgroup {
+
+}
+
+.tipgroup .button {
+	width: 100%;
+}
+.tipgroup .button:first-child {
+	margin-right: 10px;
+}

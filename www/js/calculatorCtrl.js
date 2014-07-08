@@ -1,16 +1,22 @@
-angular.module('app.calc.controllers', ['ngStorage'])
+angular.module('app.calc.controllers', [])
 
-.controller('CalculatorCtrl', function($scope, $localStorage) {
-	$scope.data = {};
-	$scope.data.bill = '';
-	$scope.data.total = 0;
-	$scope.data.tip = 0;
-	$scope.data.percent = 0.10;
-	$scope.data.description = '';
-	//$scope.$storage = $localStorage.$default({});
+.controller('CalculatorCtrl', function($scope) {
+
+// ToDo
+// Add timestamp
+// Add geolocation
+
+	$scope.setdefaults = function() {
+		$scope.data = {};
+		$scope.data.bill = '';
+		$scope.data.total = 0;
+		$scope.data.tip = 0;
+		$scope.data.percent = 0.10;
+		$scope.data.description = '';
+	};
 
 	$scope.calculateTipTotal = function() {
-		// Handle NaN
+		// Handles NaN
 		if($scope.data.bill === '') {
 			$scope.data.bill = 0;
 		}
@@ -20,14 +26,18 @@ angular.module('app.calc.controllers', ['ngStorage'])
 	};
 
 	$scope.submitExpense = function() {
-		// $scope.$storage = $localStorage.$default({
-  //         x: 42
-  //       });
+		if(localStorage['expenses']) {
+			var expenses = JSON.parse(localStorage['expenses']);
 
-		//$scope.$storage = $scope.data;
-		// build out as service
-		// push $scope.data to service
-		// clear $scope.data
+			expenses.push($scope.data);
+
+			localStorage.setItem('expenses', JSON.stringify(expenses));
+		}else{
+			localStorage.setItem('expenses', JSON.stringify([$scope.data]));
+		}
+
+		$scope.setdefaults();
+		$scope.activeToggle('ten', 0.10);
 	};
 
 	$scope.activeToggle = function(active, percent) {
@@ -40,10 +50,13 @@ angular.module('app.calc.controllers', ['ngStorage'])
 	$scope.isActive = function(active) {
 		return $scope.activated === active;
 	};
+
+	$scope.setdefaults();
 })
 
 .controller('HistoryCtrl', function($scope) {
-
+//http://ionicframework.com/docs/api/directive/ionNavBackButton/
+	$scope.expenses = JSON.parse(localStorage.getItem('expenses'));
 })
 
 .controller('StatsCtrl', function($scope) {

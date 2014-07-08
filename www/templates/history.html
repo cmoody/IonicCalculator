@@ -4,7 +4,17 @@
 	</ion-nav-buttons>
 	<ion-content class="has-header">
 		
-		<h1>History</h1>
+		<ul class="list">
+			<li class="item item-icon-right" ng-repeat="expense in expenses">
+				<p>{{expense.description}}</p>
+				<ul class="value">
+					<li>{{expense.bill | currency:""}}</li>
+					<li>{{expense.tip | currency:""}}</li>
+					<li class="value-total">{{expense.total | currency:""}}</li>
+				</ul>
+				<i class="icon ion-arrow-right-c"></i>
+			</li>
+		</ul>
 
   	</ion-content>
 </ion-view>
