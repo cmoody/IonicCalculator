@@ -1,10 +1,10 @@
-angular.module('app.calc.controllers', [])
-
-.controller('CalculatorCtrl', function($scope) {
-
 // ToDo
 // Add timestamp
 // Add geolocation
+
+angular.module('app.calc.controllers', [])
+
+.controller('CalculatorCtrl', function($scope) {
 
 	$scope.setdefaults = function() {
 		$scope.data = {};
@@ -52,6 +52,7 @@ angular.module('app.calc.controllers', [])
 	};
 
 	$scope.setdefaults();
+	$scope.activeToggle('ten', 0.10);
 })
 
 .controller('HistoryCtrl', function($scope) {
