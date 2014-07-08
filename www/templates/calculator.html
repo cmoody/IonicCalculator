@@ -1,0 +1,44 @@
+<ion-view title="Calculator">
+	<ion-nav-buttons side="left">
+    	<button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+	</ion-nav-buttons>
+	<ion-content class="has-header">
+		
+		<div class="row">
+			<input type="text" name="description" class="description" placeholder="Description" maxlength="25">
+		</div>
+
+		<div class="row headings">
+		  <div class="col">Bill</div>
+		  <div class="col">Tip</div>
+		  <div class="col">Total</div>
+		</div>
+
+		<div class="row inputs">
+		  <div class="col">
+		  	<input type="number" pattern="[0-9]*" name="bill" class="bill" ng-model="data.bill" ng-change="calculateTipTotal()">
+		  </div>
+		  <div class="col">
+		  	<input type="text" name="tip" class="tip" ng-model="data.tip" disabled>
+		  </div>
+		  <div class="col">
+		  	<input type="text" name="total" class="total" ng-model="data.total" disabled>
+		  </div>
+		</div>
+
+		<!-- Set these to ng-model="percent" -->
+		<div class="row tipbtngroup">
+			<div class="button-bar">
+			  <a class="button" ng-class="{'active': isActive('ten')}" ng-click="activeToggle('ten', 0.10)">10%</a>
+			  <a class="button" ng-class="{'active': isActive('fifteen')}" ng-click="activeToggle('fifteen', 0.15)">15%</a>
+			  <a class="button" ng-class="{'active': isActive('twenty')}" ng-click="activeToggle('twenty', 0.20)">20%</a>
+			</div>
+		</div>
+
+		<div class="row tipgroup">
+			<div class="button button-assertive btn-notip" ng-click="submitExpense()">No Tip</div>
+			<div class="button button-balanced btn-tip" ng-click="submitExpense()">Tip</div>
+		</div>
+
+  	</ion-content>
+</ion-view>
