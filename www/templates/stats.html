@@ -5,10 +5,10 @@
 	<ion-content class="has-header stats">
 		
 		<h1>Total Spent</h1>
-		<div class="pie-bill"><span>Bill</span>${{data.bill}}</div>
-		<div class="pie-tip"><span>Tip</span>${{data.tip}}</div>
+		<div class="pie-bill"><span>Bill</span>{{data.bill | currency}}</div>
+		<div class="pie-tip"><span>Tip</span>{{data.tip | currency}}</div>
 		<div id="pieChart"></div>
-		<div class="pie-total"><span>Total</span>${{data.total}}</div>
+		<div class="pie-total"><span>Total</span>{{data.total | currency}}</div>
 		<div class="avg"><span>Avg. Tip</span>{{ data.avg }}%</div>
 
   	</ion-content>

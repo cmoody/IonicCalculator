@@ -66,10 +66,6 @@ input.description {
 .stats .pie-total {
 	text-align: center;
 	margin-top: 10px;
-	span {
-		display: block;
-		font-weight: bold;
-	}
 }
 .stats .avg {
 	text-align: center;

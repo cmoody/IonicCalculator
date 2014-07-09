@@ -17,22 +17,25 @@ angular.module('app.calc.controllers', [])
 			$scope.data.bill = 0;
 		}
 
+		// Maybe remove toFixed and parseFloat to use | currency
 		$scope.data.tip = ($scope.data.bill * parseFloat($scope.data.percent)).toFixed(2);
 		$scope.data.total = (parseFloat($scope.data.bill) + parseFloat($scope.data.tip)).toFixed(2);
 	};
 
+	// Add animation overlay
 	$scope.submitExpense = function(tip) {
 		// Check if tip or no tip
 		if(!tip) {
 			$scope.data.tip = 0;
+			$scope.data.bill = $scope.data.total;
 		}
 
-		navigator.geolocation.getCurrentPosition(function(position) {
+		//navigator.geolocation.getCurrentPosition(function(position) {
 			$scope.data.date = new Date();
-			$scope.data.coordinates = {
-				latitude: position.coords.latitude, 
-				longitude: position.coords.longitude
-			};
+			// $scope.data.coordinates = {
+			// 	latitude: position.coords.latitude, 
+			// 	longitude: position.coords.longitude
+			// };
 
 			if(localStorage['expenses']) {
 				var expenses = JSON.parse(localStorage['expenses']);
@@ -44,9 +47,11 @@ angular.module('app.calc.controllers', [])
 				localStorage.setItem('expenses', JSON.stringify([$scope.data]));
 			}
 
+			// Isnt clearing form on tip
+			// Only clears tip on no tip or is slow to clear with geo
 			$scope.setdefaults();
 			$scope.activeToggle('ten', 0.10);
-		});
+		//});
 	};
 
 	$scope.activeToggle = function(active, percent) {
@@ -72,13 +77,10 @@ angular.module('app.calc.controllers', [])
 .controller('StatsCtrl', function($scope) {
 	$scope.expenses = JSON.parse(localStorage.getItem('expenses'));
 
-	// Loop through expenses
-	// var expenses
     $scope.data = {
     	bill: 0,
 	    tip: 0,
-	    total: 0,
-	    avg: (($scope.data.tip / $scope.data.total)*100).toFixed(0)
+	    total: 0
     };
 
     angular.forEach($scope.expenses, function(value, key) {
@@ -86,6 +88,9 @@ angular.module('app.calc.controllers', [])
         this.tip += parseFloat(value.tip);
         this.total += parseFloat(value.total);
     }, $scope.data);
+
+    // This math is wrong
+    $scope.data.avg = (($scope.data.tip / $scope.data.total)*100).toFixed(0);
 
 	var w = 200;                        //width
     var h = 200;                        //height
