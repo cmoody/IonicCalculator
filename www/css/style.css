@@ -42,3 +42,40 @@ input.description {
 .value {
 	text-align: right;
 }
+
+/* Stats */
+.stats h1 {
+	text-align: center;
+}
+.stats span {
+	display: block;
+	font-weight: bold;
+}
+.stats .pie-bill {
+	position: absolute;
+	text-align: center;
+	width: 30%;
+	
+}
+.stats .pie-tip {
+	position: absolute;
+	right: 0;
+	text-align: center;
+	width: 30%;
+}
+.stats .pie-total {
+	text-align: center;
+	margin-top: 10px;
+	span {
+		display: block;
+		font-weight: bold;
+	}
+}
+.stats .avg {
+	text-align: center;
+	margin-top: 10px;
+}
+#pieChart {
+	margin-top: 20px;
+	text-align: center;
+}

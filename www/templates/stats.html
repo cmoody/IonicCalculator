@@ -2,9 +2,14 @@
 	<ion-nav-buttons side="left">
     	<button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
 	</ion-nav-buttons>
-	<ion-content class="has-header">
+	<ion-content class="has-header stats">
 		
-		<h1>Stats</h1>
+		<h1>Total Spent</h1>
+		<div class="pie-bill"><span>Bill</span>${{data.bill}}</div>
+		<div class="pie-tip"><span>Tip</span>${{data.tip}}</div>
+		<div id="pieChart"></div>
+		<div class="pie-total"><span>Total</span>${{data.total}}</div>
+		<div class="avg"><span>Avg. Tip</span>{{ data.avg }}%</div>
 
   	</ion-content>
 </ion-view>
